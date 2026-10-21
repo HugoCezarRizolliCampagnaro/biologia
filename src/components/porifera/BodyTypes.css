@@ -1,0 +1,75 @@
+.bodytypes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.bodytypes-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.bodytype {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 20px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.bodytype-art {
+  width: 100%;
+  max-width: 140px;
+}
+.bodytype-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bodytype-name {
+  font-size: var(--step-2);
+  font-weight: 700;
+  margin-top: 6px;
+}
+.bodytype-short {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+.bodytypes-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+.bodytypes-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bodytypes-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+@media (max-width: 560px) {
+  .bodytypes-grid {
+    gap: 8px;
+  }
+  .bodytype {
+    padding: 14px 6px;
+  }
+  .bodytype-name {
+    font-size: 1rem;
+  }
+  .bodytype-short {
+    font-size: 0.8rem;
+  }
+}

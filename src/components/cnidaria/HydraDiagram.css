@@ -1,0 +1,34 @@
+.hydra {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.hydra .part {
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+.hydra .part.is-dim {
+  filter: saturate(0.35) brightness(0.5);
+}
+.hydra .part.is-active {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6)) brightness(1.12);
+}
+.hydra .cavity-outline {
+  stroke: transparent;
+  stroke-width: 2.5;
+}
+.hydra .part-cavidade.is-active .cavity-outline {
+  stroke: var(--cyan);
+  stroke-dasharray: 6 5;
+}
+.hydra .part-cavidade.is-dim {
+  filter: none;
+}
+.hydra .mouth-ring {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 3;
+}
+.hydra .part-boca.is-active .mouth-ring {
+  stroke: var(--cyan);
+}

@@ -1,0 +1,115 @@
+.reef {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+.reef-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.reef-corals {
+  transition: filter 0.2s linear;
+}
+.reef-svg .alga {
+  transition: opacity 0.4s ease;
+}
+.reef-zoom-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-2);
+}
+.reef-svg .fish {
+  animation: fish-swim 14s linear infinite;
+}
+.reef-svg .f1 {
+  animation-duration: 16s;
+}
+.reef-svg .f2 {
+  animation-duration: 12s;
+  animation-delay: -5s;
+}
+.reef-svg .f3 {
+  animation-duration: 19s;
+  animation-delay: -11s;
+}
+@keyframes fish-swim {
+  0% { transform: translate(-40px, 150px); }
+  25% { transform: translate(150px, 120px); }
+  50% { transform: translate(330px, 160px); }
+  75% { transform: translate(470px, 180px); }
+  100% { transform: translate(650px, 140px); }
+}
+
+.reef-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.reef-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+.reef-panel input {
+  width: 100%;
+  height: 32px;
+  accent-color: var(--coral);
+  cursor: pointer;
+}
+.reef-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--ink-3);
+}
+.reef-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  min-height: 96px;
+}
+.reef-chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+.reef-saudavel .reef-chip {
+  background: rgba(32, 197, 199, 0.18);
+  color: var(--cyan);
+}
+.reef-estresse .reef-chip {
+  background: rgba(255, 209, 102, 0.18);
+  color: #ffd166;
+}
+.reef-branqueado .reef-chip {
+  background: rgba(244, 250, 252, 0.9);
+  color: var(--abyss);
+}
+.reef-state p {
+  font-size: var(--step-1);
+}
+
+@media (max-width: 860px) {
+  .reef {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .reef-state {
+    min-height: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reef-svg .fish {
+    animation: none;
+    transform: translate(300px, 150px);
+  }
+}

@@ -1,0 +1,91 @@
+.gauge {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right, 0px));
+  top: calc(var(--header-h) + 48px + env(safe-area-inset-top, 0px));
+  bottom: 48px;
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 64px;
+  font-family: var(--font-mono);
+}
+.gauge-title {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.gauge-track {
+  position: relative;
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cyan), rgba(139, 233, 240, 0.08));
+  border-radius: 2px;
+}
+.gauge-tick {
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: var(--abyss);
+  transition: border-color 0.2s ease;
+}
+.gauge-tick:hover,
+.gauge-tick:focus-visible {
+  border-color: var(--cyan);
+}
+.gauge-tick-label {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.72rem;
+  color: var(--ink-2);
+  background: var(--panel-solid);
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.gauge-tick:hover .gauge-tick-label,
+.gauge-tick:focus-visible .gauge-tick-label {
+  opacity: 1;
+}
+.gauge-marker {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 5px rgba(255, 128, 102, 0.22);
+  pointer-events: none;
+}
+.gauge-marker span {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--coral);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1320px) {
+  .gauge {
+    display: flex;
+  }
+}

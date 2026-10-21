@@ -1,0 +1,90 @@
+.intro-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+.intro-title {
+  font-size: var(--step-4);
+  font-weight: 800;
+}
+.intro-line {
+  font-size: var(--step-1);
+  max-width: 52ch;
+}
+.phylum-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.phylum {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.phylum-art svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.phylum-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+.phylum-name {
+  font-size: var(--step-3);
+  font-weight: 800;
+}
+.phylum-sci {
+  color: var(--cyan);
+  font-size: var(--step-1);
+}
+.phylum-short {
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+.phylum-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 8px 0 12px;
+  padding: 0;
+}
+.phylum-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(139, 233, 240, 0.1);
+  color: var(--cyan);
+}
+.phylum-cnidarios .phylum-tags li {
+  background: rgba(255, 128, 102, 0.12);
+  color: #ffb3a2;
+}
+
+@media (max-width: 900px) {
+  .phylum-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .phylum {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+  .phylum-art {
+    max-width: 200px;
+  }
+}

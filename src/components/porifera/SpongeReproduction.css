@@ -1,0 +1,117 @@
+.repro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.repro-tabs {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(6, 27, 43, 0.4);
+}
+.repro-tab {
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-2);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.repro-tab[aria-selected='true'] {
+  background: var(--cyan);
+  color: var(--abyss);
+}
+.repro-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.repro-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.repro-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.repro-steps.is-sequence .repro-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  text-align: center;
+  color: var(--cyan);
+  font-weight: 700;
+}
+.repro-art svg {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+.repro-label {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+.repro-short {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+.repro-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 128, 102, 0.14);
+  color: #ffb3a2;
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+
+@media (max-width: 720px) {
+  .repro-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .repro-step {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    align-items: center;
+  }
+  .repro-art {
+    grid-row: span 2;
+  }
+  .repro-label {
+    align-self: end;
+  }
+  .repro-short {
+    align-self: start;
+  }
+  .repro-steps.is-sequence .repro-step:not(:last-child)::after {
+    content: '↓';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -15px;
+    transform: translateX(-50%);
+  }
+}

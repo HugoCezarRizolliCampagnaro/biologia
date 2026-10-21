@@ -1,0 +1,113 @@
+.traits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.trait {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+.trait:hover {
+  border-color: var(--line-strong);
+}
+.trait.is-open {
+  border-color: var(--cyan);
+  grid-column: span 2;
+}
+.traits-coral .trait.is-open {
+  border-color: var(--coral);
+}
+.trait-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  padding: 20px 18px;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+.trait-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(139, 233, 240, 0.1);
+  color: var(--cyan);
+}
+.traits-coral .trait-icon {
+  background: rgba(255, 128, 102, 0.12);
+  color: var(--coral);
+}
+.trait-label {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  line-height: 1.15;
+  padding-right: 18px;
+}
+.trait-plus {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  color: var(--ink-3);
+  transition: transform 0.25s ease;
+}
+.trait.is-open .trait-plus {
+  transform: rotate(45deg);
+  color: var(--ice);
+}
+.trait-body {
+  padding: 0 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 60ch;
+}
+.trait-body p:first-child {
+  color: var(--ice);
+}
+.trait-details {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.traits-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.traits-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.traits-cols-5 .trait.is-open {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .traits,
+  .traits-cols-3,
+  .traits-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .traits .trait:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 420px) {
+  .trait-btn {
+    padding: 16px 14px;
+  }
+  .trait-body {
+    padding: 0 14px 16px;
+  }
+}

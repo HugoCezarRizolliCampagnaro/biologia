@@ -1,0 +1,293 @@
+@import './fonts.css';
+
+/* Layout: um mergulho vertical. A página escurece conforme desce
+   e um medidor de profundidade acompanha a leitura. */
+:root {
+  /* Paleta do projeto */
+  --abyss: #061b2b;
+  --ocean: #0b3954;
+  --teal: #20c5c7;
+  --cyan: #8be9f0;
+  --ice: #f4fafc;
+  --coral: #ff8066;
+
+  /* Neutros puxados para o azul */
+  --ink: var(--ice);
+  --ink-2: #b9d0da;
+  --ink-3: #85a7b6;
+  --line: rgba(139, 233, 240, 0.16);
+  --line-strong: rgba(139, 233, 240, 0.32);
+  --panel: rgba(11, 57, 84, 0.5);
+  --panel-solid: #0a2f47;
+  --water: #0d3c58;
+
+  /* Cores dos diagramas */
+  --sp-skin: #f6d6ac;
+  --sp-gel: #c98d58;
+  --sp-gel-2: #b77b48;
+  --sp-choano: #ff8066;
+  --sp-poro: #c3b2f5;
+  --sp-ameba: #8be9f0;
+  --sp-spicule: #f4fafc;
+  --rock: #123247;
+  --hy-epi: #6fcfb8;
+  --hy-epi-back: #3f9c8a;
+  --hy-meso: #f3e7a1;
+  --hy-gastro: #d99a5b;
+  --hy-disc: #b5e3d6;
+  --hy-cnido: #ff8066;
+  --hy-cavity: #0d3c58;
+
+  /* Tipografia */
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem);
+  --step-4: clamp(2.2rem, 1.4rem + 3.4vw, 3.6rem);
+  --step-5: clamp(2.6rem, 1.4rem + 5vw, 5rem);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --container: 1120px;
+  --header-h: 64px;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px + env(safe-area-inset-top, 0px));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--abyss);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: var(--abyss);
+}
+
+/* O mar escurece com a profundidade */
+.dive {
+  background: linear-gradient(
+    180deg,
+    #0f4c6e 0%,
+    var(--ocean) 9%,
+    #092f47 30%,
+    #072439 55%,
+    var(--abyss) 80%
+  );
+}
+
+[hidden] {
+  display: none !important;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--cyan);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * 16px);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.section {
+  padding-block: clamp(64px, 9vw, 120px);
+}
+
+.block {
+  margin-top: clamp(48px, 7vw, 88px);
+}
+
+.block-title {
+  font-size: var(--step-3);
+  font-weight: 700;
+}
+
+.block-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.block-hint {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.muted {
+  color: var(--ink-2);
+}
+
+.sci {
+  font-style: italic;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--coral);
+  color: var(--abyss);
+}
+.btn-primary:hover {
+  background: #ff957f;
+}
+.btn-ghost {
+  background: rgba(6, 27, 43, 0.35);
+  border-color: var(--line-strong);
+  color: var(--ice);
+}
+.btn-ghost:hover {
+  border-color: var(--cyan);
+}
+
+/* Pílulas de seleção (chips) */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.chip:hover {
+  border-color: var(--cyan);
+  color: var(--ice);
+}
+.chip[aria-pressed='true'],
+.chip[aria-selected='true'] {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: var(--abyss);
+  font-weight: 700;
+}
+.chip-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.block-sub {
+  margin-top: 28px;
+}

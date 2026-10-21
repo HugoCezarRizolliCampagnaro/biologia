@@ -1,0 +1,172 @@
+.cycle {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.cycle-ring {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.cycle-arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.cycle-arc {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 0.6;
+  transition: stroke 0.3s ease;
+}
+.cycle-arc.is-on {
+  stroke: var(--cyan);
+}
+.cycle-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: clamp(54px, 15%, 84px);
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: var(--panel-solid);
+  cursor: pointer;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cycle-node svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.cycle-node.tag-sexuada {
+  border-color: rgba(255, 128, 102, 0.6);
+}
+.cycle-node.tag-assexuada {
+  border-color: rgba(139, 233, 240, 0.6);
+}
+.cycle-node:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+.cycle-node.is-on {
+  border-color: var(--ice);
+  box-shadow: 0 0 0 5px rgba(244, 250, 252, 0.15);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+.cycle-node-label {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.cycle-node.is-on .cycle-node-label {
+  color: var(--ice);
+  font-weight: 700;
+}
+.cycle-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.cycle-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+.cycle-title {
+  font-size: var(--step-2);
+  font-weight: 800;
+}
+.cycle-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.cycle-tag.tag-sexuada {
+  background: rgba(255, 128, 102, 0.16);
+  color: #ffb3a2;
+}
+.cycle-tag.tag-assexuada {
+  background: rgba(139, 233, 240, 0.14);
+  color: var(--cyan);
+}
+.cycle-text {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+.cycle-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.cycle-legend {
+  display: flex;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+.cycle-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cycle-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.cycle-legend i.tag-sexuada {
+  border-color: var(--coral);
+}
+.cycle-legend i.tag-assexuada {
+  border-color: var(--cyan);
+}
+.cycle-caveat {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 128, 102, 0.1);
+  border: 1px solid rgba(255, 128, 102, 0.25);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .cycle {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .cycle-node-label {
+    display: none;
+  }
+  .cycle-center {
+    width: 54%;
+    gap: 4px;
+  }
+  .cycle-title {
+    font-size: 1.05rem;
+  }
+  .cycle-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}

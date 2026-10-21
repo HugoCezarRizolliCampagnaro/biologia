@@ -1,0 +1,67 @@
+.sponge {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sponge .part {
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+.sponge .part.is-dim {
+  opacity: 0.22;
+}
+.sponge .part.is-active {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.55));
+}
+.sponge .part-outline {
+  stroke: transparent;
+  stroke-width: 3;
+  transition: stroke 0.3s ease;
+}
+.sponge .part-atrio.is-active .part-outline {
+  stroke: var(--cyan);
+  stroke-dasharray: 6 5;
+}
+.sponge .part-atrio.is-dim {
+  opacity: 1;
+}
+.sponge .pore-glow {
+  fill: transparent;
+  transition: fill 0.3s ease;
+}
+.sponge .ostium {
+  fill: #061b2b;
+  transition: fill 0.3s ease;
+}
+.sponge .part-ostios.is-active .ostium {
+  fill: var(--cyan);
+}
+.sponge .part-ostios.is-active .pore-glow {
+  fill: rgba(139, 233, 240, 0.5);
+}
+.sponge .osculum-ring {
+  stroke: transparent;
+  stroke-width: 3;
+}
+.sponge .part-osculo.is-active .osculum-ring {
+  stroke: var(--cyan);
+}
+
+/* Flagelos batendo */
+.sponge .flagellum {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: flag-beat 0.9s ease-in-out infinite alternate;
+}
+.sponge g > g:nth-child(2n) .flagellum {
+  animation-delay: -0.45s;
+}
+@keyframes flag-beat {
+  from { transform: skewY(-10deg); }
+  to { transform: skewY(10deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sponge .flagellum {
+    animation: none;
+  }
+}

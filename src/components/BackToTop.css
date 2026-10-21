@@ -1,0 +1,33 @@
+.totop {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--panel-solid);
+  border: 1px solid var(--line-strong);
+  color: var(--ice);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s ease;
+}
+.totop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.totop:hover {
+  border-color: var(--cyan);
+}
+@media (min-width: 1320px) {
+  .totop {
+    right: calc(100px + env(safe-area-inset-right, 0px));
+  }
+}

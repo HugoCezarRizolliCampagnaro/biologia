@@ -1,0 +1,162 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin-top: calc(-1 * var(--header-h) - 2px);
+  padding-top: calc(var(--header-h) + clamp(48px, 9vw, 112px));
+  padding-bottom: clamp(260px, 30vw, 320px);
+  isolation: isolate;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 70px;
+  background: linear-gradient(180deg, rgba(8, 44, 68, 0), #0a3350);
+  z-index: -1;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.hero-title {
+  font-size: var(--step-5);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  max-width: 13ch;
+}
+.hero-title span {
+  display: block;
+  color: var(--cyan);
+  font-weight: 500;
+}
+.hero-sub {
+  max-width: 46ch;
+  font-size: var(--step-1);
+  color: var(--ink-2);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  padding: 6px 14px 4px;
+  border-radius: 999px;
+  background: rgba(6, 27, 43, 0.6);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  text-decoration: none;
+  z-index: 1;
+}
+.hero-scroll svg {
+  animation: hero-bob 2.2s ease-in-out infinite;
+}
+
+/* Bolhas */
+.hero-bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-bubbles span {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(139, 233, 240, 0.55);
+  background: radial-gradient(circle at 30% 30%, rgba(244, 250, 252, 0.5), rgba(139, 233, 240, 0.05) 60%);
+  animation: hero-rise linear infinite;
+}
+
+/* Movimento das medusas e dos raios de luz */
+.hero-art .jelly {
+  animation: jelly-float 7s ease-in-out infinite;
+}
+.hero-art .jelly-slow {
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+.hero-art .jelly-bell {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: jelly-pulse 2.4s ease-in-out infinite;
+}
+.hero-art .rays {
+  animation: rays-shimmer 9s ease-in-out infinite;
+}
+.hero-art .anemone {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: anemone-sway 6s ease-in-out infinite;
+}
+
+@keyframes hero-rise {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(8px, -45vh); }
+  100% { transform: translate(-6px, -95vh); opacity: 0; }
+}
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+@keyframes jelly-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22px); }
+}
+@keyframes jelly-pulse {
+  0%, 100% { transform: scale(1, 1); }
+  45% { transform: scale(0.9, 1.07); }
+}
+@keyframes rays-shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes anemone-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bubbles {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 250px;
+  }
+  .hero-actions {
+    width: 100%;
+  }
+  .hero-actions .btn {
+    flex: 1 1 100%;
+  }
+  .hero-art {
+    top: auto;
+    height: 330px;
+  }
+}
