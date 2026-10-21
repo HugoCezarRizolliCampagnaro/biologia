@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # Saídas geradas localmente
-dist-single
-review
-artifact
-scripts/to-artifact.mjs
+/dist-single
+/review
+/artifact
+/scripts/to-artifact.mjs

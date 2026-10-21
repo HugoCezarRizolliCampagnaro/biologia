@@ -1,0 +1,126 @@
+.gloss {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gloss-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  padding: 0 14px;
+  min-height: 48px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  background: rgba(6, 27, 43, 0.4);
+  color: var(--ink-3);
+}
+.gloss-search:focus-within {
+  border-color: var(--cyan);
+}
+.gloss-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ice);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+.gloss-search input::placeholder {
+  color: var(--ink-3);
+}
+.gloss-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  align-items: start;
+}
+.gloss-item {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.gloss-item.is-open {
+  border-color: var(--cyan);
+}
+.gloss-item button {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  cursor: pointer;
+}
+.gloss-item p {
+  padding: 0 14px 14px;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+.gloss-empty {
+  color: var(--ink-2);
+}
+
+.sum {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+.sum-card {
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.sum-card h4 {
+  font-size: var(--step-2);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.sum-p h4 {
+  color: #f2ad73;
+}
+.sum-c h4 {
+  color: #ffb3a2;
+}
+.sum-r {
+  border-color: rgba(255, 128, 102, 0.35);
+}
+.sum-r h4 {
+  color: var(--coral);
+}
+.sum-card ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+.sum-card li::marker {
+  color: var(--teal);
+}
+
+@media (max-width: 900px) {
+  .gloss-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sum {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .gloss-item button {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+}
