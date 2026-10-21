@@ -1,5 +1,7 @@
 # Biologia Interativa · Poríferos e Cnidários
 
+![Biologia Interativa: Poríferos e Cnidários](public/og-image.jpg)
+
 Site educacional interativo sobre os filos **Porifera** (esponjas) e **Cnidaria** (águas-vivas, corais, anêmonas e hidras), feito para estudantes do Ensino Médio.
 
 ## O que tem no site
